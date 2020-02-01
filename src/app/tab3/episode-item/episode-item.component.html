@@ -1,0 +1,7 @@
+<ion-item color="dark" class="cursor" (click)="showModal()">
+  <ion-label>{{ episode.name }}</ion-label>
+  <ion-note slot="start" color="warning">
+    {{ episode.episode | seasonEpisode: "s" }} -
+    {{ episode.episode | seasonEpisode: "e" }}
+  </ion-note>
+</ion-item>

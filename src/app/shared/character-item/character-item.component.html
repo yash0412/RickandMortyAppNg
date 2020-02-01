@@ -1,0 +1,7 @@
+<ion-item color="dark" (click)="showModal()" class="cursor">
+  <ion-avatar class="ion-margin">
+    <ion-img alt="{{ character.name }}" src="{{ character.image }}"></ion-img>
+  </ion-avatar>
+  <ion-label>{{ character.name }}</ion-label>
+  <ion-badge [color]="color" *ngIf="context">{{ character.status }}</ion-badge>
+</ion-item>

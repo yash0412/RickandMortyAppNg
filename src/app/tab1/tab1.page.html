@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>
+      Characters
+    </ion-title>
+    <!-- <ion-buttons slot="start">
+      <ion-menu-button autoHide="false" menu="tab1"></ion-menu-button>
+    </ion-buttons> -->
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleSearch()">
+        <ion-icon
+          name="search"
+          color="light"
+          size="medium"
+          *ngIf="!showSearch"
+        ></ion-icon>
+        <ion-icon
+          name="close"
+          color="light"
+          size="medium"
+          *ngIf="showSearch"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" id="tab1" (swipe)="switchTab($event)">
+  <ion-searchbar
+    #autofocus
+    animated="true"
+    (ionChange)="search($event)"
+    showCancelButton="focus"
+    style="width:100%;"
+    color="dark"
+    debounce="250"
+    *ngIf="showSearch"
+  ></ion-searchbar>
+  <ion-spinner *ngIf="loading" color="light"></ion-spinner>
+  <ion-icon size="large" name="sad" *ngIf="!characters.length"></ion-icon>
+  <ion-list color="dark" *ngIf="characters.length">
+    <app-character-item
+      *ngFor="let character of characters;let i = index;"
+      [character]="character"
+      [context]="true"
+    ></app-character-item>
+    <ion-infinite-scroll
+      threshold="2%"
+      style="background-color: #222428;"
+      (ionInfinite)="getCharacterData($event)"
+      *ngIf="infiniteScroll"
+    >
+      <ion-infinite-scroll-content
+        loadingText="Searching the multiverse"
+        loadingSpinner="crescent"
+      >
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-list>
+</ion-content>
+<!-- <ion-menu
+  menuId="tab1"
+  contentId="tab1"
+  side="start"
+  maxEdgeStart="100"
+  type="overlay"
+>
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title>Options</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content color="dark">
+    <ion-list color="dark">
+      <ion-item color="dark">
+        <ion-icon name="funnel"></ion-icon>
+        <ion-label>Filter</ion-label>
+      </ion-item>
+      <ion-item color="dark">
+        <ion-icon name="funnel"></ion-icon>
+        <ion-label>Filter</ion-label>
+      </ion-item>
+      <ion-item color="dark">
+        <ion-icon name="funnel"></ion-icon>
+        <ion-label>Filter</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu> -->

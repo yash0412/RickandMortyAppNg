@@ -1,0 +1,31 @@
+<ion-content color="dark">
+  <ion-card color="dark" class="modal">
+    <ion-button (click)="hideModal()" color="danger" fill="clear">
+      <ion-icon
+        slot="start"
+        name="close"
+        color="danger"
+        size="large"
+      ></ion-icon>
+      Close
+    </ion-button>
+    <ion-card-header>
+      <ion-card-title>{{ location.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        <ion-label>Type: {{ location.type }}</ion-label>
+      </p>
+      <p>
+        <ion-label>Dimension: {{ location.dimension }}</ion-label>
+      </p>
+      <ion-list>
+        <ion-list-header>Residents</ion-list-header>
+        <app-character-item
+          *ngFor="let resident of residents"
+          [character]="resident"
+        ></app-character-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

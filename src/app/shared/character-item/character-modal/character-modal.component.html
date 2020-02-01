@@ -1,0 +1,30 @@
+<ion-content color="dark">
+  <ion-card color="dark" class="modal">
+    <ion-button (click)="hideModal()" color="danger" fill="clear">
+      <ion-icon
+        slot="start"
+        name="close"
+        color="danger"
+        size="large"
+      ></ion-icon>
+      Close
+    </ion-button>
+    <ion-card-header>
+      <ion-card-subtitle>{{ character.gender }}</ion-card-subtitle>
+      <ion-card-title>{{ character.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-img [alt]="character.name" [src]="character.image"></ion-img>
+    <ion-card-content>
+      <ion-badge [color]="color">{{ character.status }}</ion-badge>
+      <p>
+        <ion-label>Species: {{ character.species }}</ion-label>
+      </p>
+      <p>
+        <ion-label>Origin: {{ character.origin.name }}</ion-label>
+      </p>
+      <p>
+        <ion-label> Current Location: {{ character.location.name }} </ion-label>
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
